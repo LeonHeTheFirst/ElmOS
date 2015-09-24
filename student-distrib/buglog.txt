@@ -1,0 +1,66 @@
+----------------------------------------------------------------------------------------
+CP1:
+----------------------------------------------------------------------------------------
+
+No bugs
+
+----------------------------------------------------------------------------------------
+CP2:
+----------------------------------------------------------------------------------------
+
+All bugs fixed on same day for this checkpoint.
+
+	11/1/14 - GDT info not cleared from screen while testing keyboard. FIXED: Clearing the screen at startup.
+	
+	11/1/14	- Right shift key would caps lock after being pressed once. FIXED: Changed value of Right Shift key
+	
+	11/1/14	- When text buffer was filled up, backspaced would clear characters off screen and not the buffer.
+		FIXED: Keyboard interrupt handler would write more characters than the buffer would handle which was more
+		characters than the conditions allowed, which caused nothing to happen to the buffer when backspacing.
+		Changed a number to not allow too many characters to be written to the buffer.
+	
+	11/1/14	- Scrolling not working. Each character would be on a new line. FIXED: Changed boundary conditions and buffer for scrolling.
+	
+	11/1/14	- Read directory was just printing out the directory. FIXED: Write the directory to the buffer and not to the screen.
+
+----------------------------------------------------------------------------------------
+CP3:
+----------------------------------------------------------------------------------------
+
+	11/16/14 - Halt produced page faults. 11/16/14 FIXED: Saved and loaded critical variables into pcb.
+
+	11/17/14 - Jump table was not in standard jump table form. 11/17/14 FIXED: Changed the jump table to standard jump table form.
+		
+----------------------------------------------------------------------------------------
+CP4:
+----------------------------------------------------------------------------------------
+
+	11/30/14 - Counter not working. 12/1/14 FIXED: Wrote to correct buffer.
+	
+	11/30/14 - ls not working. 12/1/14 FIXED: Wrote to the buffer instead of printing to the screen
+	
+	11/30/14 - Command not read properly. 12/1/14 FIXED: Changed boundary condition to not always be true.
+	
+----------------------------------------------------------------------------------------
+CP5:
+----------------------------------------------------------------------------------------
+
+	12/6/14 - Switching terminals freezes the system. FIXED: Send an EOI at the end of terminal switch
+	
+	12/6/14- Exiting from multiple shells page faults. FIXED: Changed a few boundary variables to prevent wrongful execution or halting
+	
+	12/6/14 - Exiting a shell after opening shells in multiple terminals page faults. FIXED: corrected system for finding parent PID
+
+	12/6/14 - Switching terminals rapidly page faults. FIXED: corrected system for finding parent PID
+
+	12/8/14 - Running fish, pingpong, and counter in each terminal causes page faults. FIXED: corrected system for finding parent PID
+
+	12/8/14 - Running pingpong -> switching terminals -> switching back, freezes pingpong. FIXED: corrected paging restoration
+
+	12/8/14 - Having six running programs and switching terminals page faults. FIXED: corrected system for finding parent PID
+
+	12/8/14 - After opening terminals, we could switch terminals by pressing only Function keys without pressing ALT. FIXED: value for alt released was wrong.
+	
+	12/9/14 - Switching between running fishes would page fault because of memory being overwritten. FIXED: Moved the memory being overwritten to a safe place.
+
+	12/9/14 - Linebuffer random length after switching terminal. FIXED: Saved and restored a linebuffer counter for each terminal.
